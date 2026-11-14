@@ -1,0 +1,100 @@
+{
+  "query": "celseq2",
+  "classes": [
+    "acinar",
+    "activated_stellate",
+    "alpha",
+    "beta",
+    "delta",
+    "ductal",
+    "endothelial",
+    "epsilon",
+    "gamma",
+    "macrophage",
+    "mast",
+    "quiescent_stellate",
+    "schwann"
+  ],
+  "K": 13,
+  "min_eval": 50,
+  "budgets": [
+    5,
+    10,
+    20,
+    50,
+    100
+  ],
+  "mean_eval_counts": [
+    138.4,
+    44.7,
+    416.6,
+    224.8,
+    102.1,
+    133.9,
+    9.9,
+    1.5,
+    53.5,
+    7.3,
+    3.5,
+    4.8,
+    2.0
+  ],
+  "summary": {
+    "naive": {
+      "marginal": 0.8857392825896764,
+      "worst_all": 0.25,
+      "worst_ok": 0.7881164224913303,
+      "macro_ok": 0.8825609185217551,
+      "set_size": 0.9580927384076989
+    },
+    "classwise": {
+      "marginal": 0.8866141732283465,
+      "worst_all": 0.4333333333333333,
+      "worst_ok": 0.8001313638873876,
+      "macro_ok": 0.8838956693020295,
+      "set_size": 1.637270341207349
+    },
+    "combined_est": {
+      "marginal": 0.9925634295713035,
+      "worst_all": 0.4333333333333333,
+      "worst_ok": 0.9934115383829072,
+      "macro_ok": 0.9985863678693384,
+      "set_size": 6.224234470691163
+    },
+    "target_only_5": {
+      "marginal": 1.0,
+      "worst_all": 1.0,
+      "worst_ok": 1.0,
+      "macro_ok": 1.0,
+      "set_size": 13.0
+    },
+    "target_only_10": {
+      "marginal": 0.9014873140857391,
+      "worst_all": 0.7817810432971914,
+      "worst_ok": 0.7972344184876897,
+      "macro_ok": 0.9020945243596795,
+      "set_size": 5.690463692038495
+    },
+    "target_only_20": {
+      "marginal": 0.9098862642169729,
+      "worst_all": 0.7629917455933992,
+      "worst_ok": 0.7795824013144896,
+      "macro_ok": 0.9046679947438131,
+      "set_size": 5.586089238845146
+    },
+    "target_only_50": {
+      "marginal": 0.9147856517935258,
+      "worst_all": 0.8366616623265191,
+      "worst_ok": 0.8366616623265191,
+      "macro_ok": 0.9085509332447261,
+      "set_size": 5.578915135608049
+    },
+    "target_only_100": {
+      "marginal": 0.9075240594925633,
+      "worst_all": 0.8395524548162756,
+      "worst_ok": 0.8395524548162756,
+      "macro_ok": 0.9040414738781137,
+      "set_size": 5.567016622922135
+    }
+  }
+}

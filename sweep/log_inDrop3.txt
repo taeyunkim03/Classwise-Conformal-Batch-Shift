@@ -1,0 +1,31 @@
+dropping reference classes with <20 cells: ['t_cell']
+WARNING: no --split-key -> CELL-LEVEL random split. Cells from a donor are dependent; report as cell-level empirical calibration, NOT a finite-sample biological guarantee.
+EVALUATION TYPE: retrospective CLOSED-SET benchmark (shared types selected using query annotations; open-set/OOD difficulty removed).
+query=inDrop3  ref n=12772  query n=3603  K=13
+reference proportions: [0.065 0.028 0.342 0.265 0.07  0.138 0.017 0.002 0.052 0.005 0.003 0.011
+ 0.002]
+query     proportions: [0.234 0.028 0.314 0.218 0.045 0.104 0.026 0.001 0.01  0.004 0.002 0.015
+ 0.   ]
+
+base annotator accuracy: 0.947 (>0.98 => scenario lacks discriminative power for this question)
+domain-classifier AUC (ref vs query): 0.992   <-- NO OVERLAP: importance weighting is NOT applicable here;
+       any 'coverage' from weighted methods comes from abstention (huge sets),
+       not correction. Report as an overlap failure.
+mean relative calibration ESS: 0.0013   weight p99=10  max=8.52e+03
+full-set (all-K) frequency:    0.000
+per-class fallback fraction (of trialxfold instances; 1.0 = class NEVER corrected): [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.62, 1.0, 1.0, 0.01, 1.0]
+per-class WITHIN-CELL relative ESS (class-k weights on Y=k cal cells): [0.036, 0.076, 0.003, 0.008, 0.037, 0.005, 0.168, 1.0, 0.648, 1.0, 1.0, 0.169, 1.0]
+mean calibration cells per class: [411.2, 185.0, 2188.3, 1697.8, 445.2, 871.7, 108.2, 16.0, 332.2, 31.4, 18.1, 68.5, 12.4]
+label-aware benchmark fallback fraction: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.85, 1.0, 1.0, 0.0, 1.0]
+
+target = 0.90
+method          marginal  worst cls    macro  set size
+naive              0.885      0.600    0.836      0.97
+classwise          0.888      0.750    0.888      1.51
+weighted           0.890      0.650    0.861      4.49
+combined_est       0.968      0.750    0.951      7.13
+combined_marg      0.939      0.787    0.960     10.40
+combined_lab       0.972      0.750    0.949      6.62
+
+saved -> sweep/results_inDrop3.json
+NOTE: 'combined_est' (unlabeled) and 'combined_marg' are heuristics; no exact validity claimed. 'combined_lab' uses RETROSPECTIVE query labels (cross-fitted) -- a benchmark unavailable in deployment. Success/failure of combined_marg is diagnostic evidence about the transfer, not identification of the shift mechanism.

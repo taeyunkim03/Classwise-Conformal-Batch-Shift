@@ -1,0 +1,30 @@
+WARNING: no --split-key -> CELL-LEVEL random split. Cells from a donor are dependent; report as cell-level empirical calibration, NOT a finite-sample biological guarantee.
+EVALUATION TYPE: retrospective CLOSED-SET benchmark (shared types selected using query annotations; open-set/OOD difficulty removed).
+query=celseq2  ref n=14090  query n=2285  K=13
+reference proportions: [0.099 0.027 0.33  0.264 0.06  0.134 0.021 0.002 0.042 0.005 0.003 0.013
+ 0.001]
+query     proportions: [0.12  0.039 0.369 0.195 0.089 0.113 0.009 0.002 0.048 0.007 0.003 0.005
+ 0.002]
+
+base annotator accuracy: 0.949 (>0.98 => scenario lacks discriminative power for this question)
+domain-classifier AUC (ref vs query): 0.998   <-- NO OVERLAP: importance weighting is NOT applicable here;
+       any 'coverage' from weighted methods comes from abstention (huge sets),
+       not correction. Report as an overlap failure.
+mean relative calibration ESS: 0.0014   weight p99=4.65  max=1.9e+04
+full-set (all-K) frequency:    0.000
+per-class fallback fraction (of trialxfold instances; 1.0 = class NEVER corrected): [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0]
+per-class WITHIN-CELL relative ESS (class-k weights on Y=k cal cells): [0.021, 0.056, 0.004, 0.008, 0.033, 0.019, 1.0, 1.0, 0.041, 1.0, 1.0, 1.0, 1.0]
+mean calibration cells per class: [694.4, 186.2, 2345.6, 1851.6, 428.1, 934.4, 146.5, 15.2, 293.8, 30.8, 18.2, 89.4, 10.8]
+label-aware benchmark fallback fraction: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0]
+
+target = 0.90
+method          marginal  worst cls    macro  set size
+naive              0.887      0.525    0.808      0.96
+classwise          0.889      0.687    0.869      1.20
+weighted           0.923      0.662    0.878      7.02
+combined_est       0.991      0.687    0.928      6.18
+combined_marg      0.960      0.902    0.975     11.78
+combined_lab       0.991      0.687    0.927      5.98
+
+saved -> sweep/results_celseq2.json
+NOTE: 'combined_est' (unlabeled) and 'combined_marg' are heuristics; no exact validity claimed. 'combined_lab' uses RETROSPECTIVE query labels (cross-fitted) -- a benchmark unavailable in deployment. Success/failure of combined_marg is diagnostic evidence about the transfer, not identification of the shift mechanism.

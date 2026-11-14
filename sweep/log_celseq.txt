@@ -1,0 +1,28 @@
+WARNING: no --split-key -> CELL-LEVEL random split. Cells from a donor are dependent; report as cell-level empirical calibration, NOT a finite-sample biological guarantee.
+EVALUATION TYPE: retrospective CLOSED-SET benchmark (shared types selected using query annotations; open-set/OOD difficulty removed).
+query=celseq  ref n=15371  query n=1004  K=13
+reference proportions: [0.094 0.029 0.345 0.261 0.065 0.118 0.02  0.002 0.044 0.005 0.003 0.012
+ 0.002]
+query     proportions: [0.227 0.019 0.19  0.16  0.05  0.326 0.005 0.001 0.018 0.001 0.001 0.001
+ 0.001]
+
+base annotator accuracy: 0.947 (>0.98 => scenario lacks discriminative power for this question)
+domain-classifier AUC (ref vs query): 0.974   <-- weak overlap; weights will be unstable
+mean relative calibration ESS: 0.0078   weight p99=17.6  max=949
+full-set (all-K) frequency:    0.000
+per-class fallback fraction (of trialxfold instances; 1.0 = class NEVER corrected): [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+per-class WITHIN-CELL relative ESS (class-k weights on Y=k cal cells): [0.016, 1.0, 0.007, 0.004, 0.043, 0.013, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+mean calibration cells per class: [718.8, 220.4, 2668.0, 1989.2, 507.2, 907.4, 153.0, 15.2, 337.6, 38.6, 20.2, 97.4, 12.2]
+label-aware benchmark fallback fraction: [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+target = 0.90
+method          marginal  worst cls    macro  set size
+naive              0.878      0.000    0.747      0.96
+classwise          0.879      0.000    0.798      1.14
+weighted           0.882      0.000    0.742      1.74
+combined_est       0.926      0.000    0.817      3.80
+combined_marg      0.896      0.831    0.933      8.46
+combined_lab       0.923      0.000    0.816      3.64
+
+saved -> sweep/results_celseq.json
+NOTE: 'combined_est' (unlabeled) and 'combined_marg' are heuristics; no exact validity claimed. 'combined_lab' uses RETROSPECTIVE query labels (cross-fitted) -- a benchmark unavailable in deployment. Success/failure of combined_marg is diagnostic evidence about the transfer, not identification of the shift mechanism.
